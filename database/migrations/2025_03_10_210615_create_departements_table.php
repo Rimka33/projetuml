@@ -10,18 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('administrateurs', function (Blueprint $table) {
-            $table->integer('id')->unique();
+        Schema::create('departements', function (Blueprint $table) {
+            $table->id();
             $table->string('nom');
-            $table->string('prenom');
-            $table->string('email');
-            $table->string('password')->comment('Stocké avec cryptage');
-            $table->timestamp('derniere_connexion')->nullable();
-            $table->primary('id');
+            $table->string('description');
+            $table->string('status');
+            $table->date('date_creation');
             $table->timestamps();
-            
-            // Remove this line for now - we'll add it in a separate migration
-            // $table->foreign('id')->references('created_by')->on('utilisateurs');
         });
     }
 
@@ -30,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('administrateurs');
+        Schema::dropIfExists('departements');
     }
 };

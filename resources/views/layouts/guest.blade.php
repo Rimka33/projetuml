@@ -5,26 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'UML') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- FontAwesome JS-->
+        <script defer src="{{ asset('assets/plugins/fontawesome/js/all.min.js') }}"></script>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- App CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/css/portal.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
-
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+    <body class="app app-login p-0">
+        <div class="app-auth-wrapper d-flex justify-content-center align-items-center min-vh-100">
+            <div class="auth-main-col text-center p-5">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="app-auth-body mx-auto">
+                        <div class="app-auth-branding mb-4">
+                            <a class="app-logo" href="{{ url('/') }}">
+                                <img class="logo-icon me-2" src="{{ asset('assets/images/logoESP.png') }}" alt="logo" style="height: 60px;">
+                            </a>
+                        </div>
+                        {{ $slot }}
+                    </div>
+                    <footer class="app-auth-footer">
+                        <div class="container text-center py-3">
+                            <small class="copyright">&copy; {{ date('Y') }} ESP. Tous droits réservés.</small>
+                        </div>
+                    </footer>
+                </div>
             </div>
         </div>
+        <!-- Javascript -->
+        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     </body>
 </html>

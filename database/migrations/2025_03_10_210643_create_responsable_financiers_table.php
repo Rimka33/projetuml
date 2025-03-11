@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('responsable_financiers', function (Blueprint $table) {
-            $table->integer('id')->unique();
-            $table->integer('utilisateur_id');
-            $table->primary('id');
-            
-            $table->foreign('utilisateur_id')->references('id_integer')->on('utilisateurs');           
+            $table->id();
+            $table->foreignId('utilisateur_id')->constrained('utilisateurs');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -12,14 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('conference_budgetaires', function (Blueprint $table) {
-            $table->integer('id')->unique();
+            $table->id();
+            $table->foreignId('directeur_id')->constrained('directeurs');
+            $table->string('status');
             $table->date('date_conference');
-            $table->string('lieu_conference');
-            $table->string('participants');
-            $table->integer('directeur_id');
-            $table->primary('id');
-            
-            $table->foreign('directeur_id')->references('id')->on('directeurs');           
+            $table->text('commentaires')->nullable();
             $table->timestamps();
         });
     }

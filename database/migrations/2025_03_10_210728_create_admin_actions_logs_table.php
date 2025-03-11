@@ -12,18 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admin_actions_logs', function (Blueprint $table) {
-            $table->integer('id')->unique();
-            $table->integer('admin_id');
-            $table->string('action_type')->comment('CREATE_USER, UPDATE_USER, ASSIGN_DEPT, etc.');
-            $table->string('entity_type')->comment('DIRECTEUR, PROFESSEUR, CHEF_DEPT, etc.');
-            $table->integer('entity_id');
-            $table->json('old_values')->comment('Anciennes valeurs pour les mises à jour');
-            $table->json('new_values')->comment('Nouvelles valeurs');
-            $table->timestamp('action_date');
-            $table->string('ip_address');
-            $table->primary('id');
-            
-            $table->foreign('admin_id')->references('id')->on('administrateurs');            
+            $table->id();
+            $table->foreignId('admin_id')->constrained('utilisateurs');
+            $table->string('action');
+            $table->string('description');
             $table->timestamps();
         });
     }

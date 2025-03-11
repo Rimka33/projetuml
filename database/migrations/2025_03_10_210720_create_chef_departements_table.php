@@ -12,15 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('chef_departements', function (Blueprint $table) {
-            $table->integer('id_chef_dept')->unique();
-            $table->string('grade');
-            $table->integer('professeur_id');
-            $table->integer('departement_id');
-            $table->date('date_nomination');
-            $table->primary('id_chef_dept');
-            
-            $table->foreign('professeur_id')->references('id')->on('professeurs');   
-        
+            $table->id();
+            $table->foreignId('utilisateur_id')->constrained('utilisateurs');
+            $table->foreignId('departement_id')->constrained('departements');
+            $table->string('status');
             $table->timestamps();
         });
     }
