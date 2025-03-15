@@ -10,6 +10,11 @@
                 <div class="col-auto">
                     <h4 class="app-card-title">Créer un nouvel utilisateur</h4>
                 </div>
+                <div class="col-auto">
+                    <a href="{{ route('admin.dashboard') }}" class="btn app-btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Retour
+                    </a>
+                </div>
             </div>
         </div>
         <div class="app-card-body px-4 w-100">

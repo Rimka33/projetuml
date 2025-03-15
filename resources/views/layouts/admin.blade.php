@@ -41,7 +41,7 @@
 
                             <div class="app-utility-item app-user-dropdown dropdown">
                                 <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                                    <img src="{{ asset('assets/images/user.png') }}" alt="user profile">
+                                    <img src="{{ Auth::user()->profile_image ? Storage::url(Auth::user()->profile_image) : asset('assets/images/user.png') }}" alt="user profile" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
                                     <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->nom }} {{ Auth::user()->prenom }}</span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">

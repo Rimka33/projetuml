@@ -18,7 +18,8 @@ class Utilisateur extends Authenticatable
         'role',
         'status',
         'date_creation',
-        'created_by'
+        'created_by',
+        'profile_image'
     ];
 
     protected $hidden = [

@@ -9,46 +9,11 @@
         <!-- FontAwesome JS-->
         <script defer src="{{ asset('assets/plugins/fontawesome/js/all.min.js') }}"></script>
 
-        <!-- App CSS -->
-        <link rel="stylesheet" href="{{ asset('assets/css/portal.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            .welcome-header {
-                background: var(--primary-color);
-                padding: 2rem 0;
-                color: white;
-            }
-            .welcome-content {
-                padding: 4rem 0;
-            }
-            .feature-card {
-                background: white;
-                border-radius: 8px;
-                padding: 2rem;
-                margin-bottom: 2rem;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                transition: transform 0.3s ease;
-            }
-            .feature-card:hover {
-                transform: translateY(-5px);
-            }
-            .feature-icon {
-                background: var(--accent-color);
-                color: var(--primary-color);
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 1rem;
-            }
-            .auth-buttons .btn {
-                margin: 0 0.5rem;
-            }
-        </style>
+        <!-- App CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/css/welcome.css') }}">
     </head>
     <body>
         <header class="welcome-header">
@@ -56,19 +21,19 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <img src="{{ asset('assets/images/logoESP.png') }}" alt="Logo ESP" class="img-fluid mb-3" style="max-height: 80px;">
-                        <h1>Bienvenue sur UML</h1>
-                        <p class="lead">Plateforme de gestion des départements de l'ESP</p>
+                        <h1>Bienvenue sur la plateforme de gestion des besoins</h1>
                     </div>
                     <div class="col-md-6 text-end">
                         @if (Route::has('login'))
                             <div class="auth-buttons">
                                 @auth
                                     <a href="{{ url('/dashboard') }}" class="btn app-btn-primary">Tableau de bord</a>
+                                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-light">Déconnexion</button>
+                                    </form>
                                 @else
                                     <a href="{{ route('login') }}" class="btn app-btn-primary">Connexion</a>
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="btn btn-light">Inscription</a>
-                                    @endif
                                 @endauth
                             </div>
                         @endif
@@ -86,7 +51,7 @@
                                 <i class="fas fa-users fa-2x"></i>
                             </div>
                             <h3>Gestion des Utilisateurs</h3>
-                            <p>Gérez facilement les directeurs et chefs de département</p>
+                            <p>Gérez facilement la gestion des accès</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -118,6 +83,6 @@
         </footer>
 
         <!-- Javascript -->
-        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

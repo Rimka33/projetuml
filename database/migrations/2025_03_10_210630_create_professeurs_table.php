@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('professeurs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('utilisateur_id')->constrained('utilisateurs');
+            $table->foreignId('departement_id')->constrained('departements');
             $table->string('specialite');
             $table->string('grade');
             $table->string('status');

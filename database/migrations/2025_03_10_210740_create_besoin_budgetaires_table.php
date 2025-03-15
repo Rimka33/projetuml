@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('besoin_budgetaires', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('utilisateur_id')->constrained('utilisateurs');
+            $table->foreignId('departement_id')->nullable()->constrained('departements');
+            $table->string('titre')->nullable();
+            $table->text('description');
+            $table->decimal('montant', 15, 2);
+            $table->string('priorite')->default('medium');
+            $table->string('status')->default('pending');
+            $table->text('justification')->nullable();
+            $table->string('type_demandeur')->nullable();
             $table->timestamps();
         });
     }
